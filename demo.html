@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Proxima Bot Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .demo-container {
+            text-align: center;
+            background: linear-gradient(135deg, #001f3f, #003366);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 25px rgba(0, 162, 255, 0.7);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #00a2ff;
+            text-shadow: 0 0 10px rgba(0, 162, 255, 0.8);
+        }
+
+        .chat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            height: 250px;
+            overflow-y: auto;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .chat-box p {
+            background: #007acc;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin: 5px 0;
+            width: fit-content;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background: #00a2ff;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border: none;
+        }
+
+        button {
+            width: 100%;
+            background: #00a2ff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: #007acc;
+        }
+
+        .upgrade {
+            margin-top: 10px;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🔍 Try Proxima Bot</h1>
+        <p>Test the bot’s auto-reply feature below:</p>
+
+        <div class="chat-box" id="chatBox">
+            <p class="bot-message">🤖 Hello! Try sending a message.</p>
+        </div>
+
+        <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">Send</button>
+
+        <p class="upgrade" id="upgradeMessage" style="display: none;">⚠️ You’ve reached the demo limit! <br><a href="buy.html" style="color: #ffcc00;">Upgrade to Premium</a></p>
+    </div>
+
+    <script>
+        let messageCount = 0;
+        const maxMessages = 5;
+
+        function sendMessage() {
+            const userInput = document.getElementById("userInput");
+            const message = userInput.value.trim();
+            if (message === "") return;
+
+            const chatBox = document.getElementById("chatBox");
+            const userMessage = document.createElement("p");
+            userMessage.className = "user-message";
+            userMessage.textContent = "🙋 " + message;
+            chatBox.appendChild(userMessage);
+
+            userInput.value = "";
+            messageCount++;
+
+            setTimeout(() => {
+                const botMessage = document.createElement("p");
+                botMessage.className = "bot-message";
+                
+                if (message.toLowerCase().includes("hello")) {
+                    botMessage.textContent = "🤖 Hi there! How can I help you?";
+                } else if (message.toLowerCase().includes("price")) {
+                    botMessage.textContent = "💰 Our bot is available for free (limited) or premium (unlimited auto-replies).";
+                } else if (message.toLowerCase().includes("features")) {
+                    botMessage.textContent = "🚀 Features include auto-replies, keyword detection, and 24/7 uptime!";
+                } else {
+                    botMessage.textContent = "🤖 Sorry, I can’t understand that in demo mode.";
+                }
+
+                chatBox.appendChild(botMessage);
+
+                if (messageCount >= maxMessages) {
+                    document.getElementById("upgradeMessage").style.display = "block";
+                    userInput.disabled = true;
+                }
+            }, 1000);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
