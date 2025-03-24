@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxima Bot Seller</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes animateBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .flyer {
+            text-align: center;
+            background: linear-gradient(135deg, #001f3f, #003366);
+            background-size: 300% 300%;
+            animation: animateBg 5s infinite alternate;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 25px rgba(0, 162, 255, 0.7);
+            width: 90%;
+            max-width: 420px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.05);
+            z-index: 0;
+            user-select: none;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #00a2ff;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(0, 162, 255, 0.8);
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+            font-weight: 300;
+        }
+
+        .trust-badge {
+            font-size: 14px;
+            background: rgba(0, 162, 255, 0.1);
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .grid div {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .cta {
+            margin-top: 20px;
+            font-weight: bold;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .contacts a {
+            display: inline-block;
+            background: #00a2ff;
+            color: white;
+            padding: 12px 20px;
+            margin: 10px 5px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 0px 15px rgba(0, 162, 255, 0.5);
+        }
+
+        .contacts a:hover {
+            background: #007acc;
+            transform: translateY(-2px);
+        }
+
+        .how-it-works, .why-us, .reviews, .payment {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .how-it-works ol, .why-us ul {
+            padding-left: 20px;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #00a2ff;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .chat-support {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: #00a2ff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0px 0px 15px rgba(0, 162, 255, 0.5);
+            transition: 0.3s;
+        }
+
+        .chat-support:hover {
+            background: #007acc;
+            transform: scale(1.05);
+        }
+        body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    padding: 10px; /* Ensures some spacing on smaller screens */
+}
+
+.flyer {
+    text-align: center;
+    background: linear-gradient(135deg, #001f3f, #003366);
+    background-size: 300% 300%;
+    animation: animateBg 5s infinite alternate;
+    padding: 5%;
+    border-radius: 12px;
+    box-shadow: 0px 0px 25px rgba(0, 162, 255, 0.7);
+    width: 100%;
+    max-width: 420px;
+    max-height: 90vh; /* Ensures it fits within the screen */
+    overflow-y: auto; /* Enables scrolling if content overflows */
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 480px) {
+    .flyer {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .grid div {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .contacts a {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+@media (max-width: 768px) {
+    .flyer {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* Stack items on smaller screens */
+    }
+
+    .contacts a {
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <span class="trust-badge">✔ Trusted by 100+ Businesses</span>
+        <h1>🚀 Proxima Bot Seller</h1>
+        <p>Automate Your Business with AI-Powered Bots!</p>
+
+        <div class="watermark">Proxima Bots</div>
+
+        <div class="grid">
+            <div>💬 Telegram Auto-Reply</div>
+            <div>📩 Instagram Auto-DM</div>
+            <div>📊 Customer Support Bots</div>
+            <div>💻 Custom Automation</div>
+        </div>
+
+        <div class="how-it-works">
+            <h3>📌 How It Works</h3>
+            <ol>
+                <li>📝 Tell us your requirements.</li>
+                <li>⚙️ We develop your custom bot.</li>
+                <li>🚀 You launch & automate your business!</li>
+            </ol>
+        </div>
+
+        <div class="why-us">
+            <h3>💡 Why Choose Us?</h3>
+            <ul>
+                <li>✔ Custom AI-Powered Bots</li>
+                <li>✔ Lifetime Updates & Support</li>
+                <li>✔ Affordable & Reliable</li>
+                <li>✔ Trusted by 100+ Businesses</li>
+            </ul>
+        </div>
+
+        <div class="reviews">
+            <h3>⭐ Customer Reviews</h3>
+            <p>“This bot saves me hours every day! – <strong>John D.</strong>”</p>
+            <p>“Best investment I made for my business. – <strong>Sophia K.</strong>”</p>
+        </div>
+
+        <div class="cta">
+            <p>💡 DM to Get Your Bot Now!</p>
+            <div class="contacts">
+                <a href="https://wa.me/2347082798562" target="_blank">📱 WhatsApp</a>
+                <a href="https://telegram.org/dl" target="_blank">💬 Telegram</a>
+            </div>
+
+            <!-- 🔍 View Features Button -->
+            <a href="features.html" class="contacts">🔍 View Features</a>
+        </div>
+
+        <div class="payment">
+            <h3>💳 Payment Methods</h3>
+            <p>✅ Bank Transfer | ✅ paystack | ✅ PayPal</p>
+        </div>
+    </div>
+
+    <a href="https://wa.me/2347082798562" class="chat-support">💬 Need Help? Chat Now</a>
+</body>
+</html>
